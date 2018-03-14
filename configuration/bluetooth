@@ -5,7 +5,7 @@ path=/lib/firmware/brcm/
 
 if [ $EUID != 0 ]
 then
-    echo "Please run thi script as root (sudo $@$0)."
+    echo "Please run this script as root (sudo $@$0)."
     exit
 fi
 
