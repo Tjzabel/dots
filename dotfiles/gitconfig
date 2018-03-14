@@ -1,0 +1,10 @@
+[user]
+	name = Tim Zabel
+	email = Tjzabel21@gmail.com
+    signingkey = BCF88DA26C612113
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg2
