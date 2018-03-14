@@ -1,0 +1,44 @@
+# ZSH Installation source
+  export ZSH=/home/tim/.oh-my-zsh
+
+# Current ZSH theme
+ZSH_THEME="robbyrussell"
+
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+
+# ZSH plugins
+plugins=(
+  git
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Custom configuration
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
+
+## RIT-specific
+
+alias glados="ssh tjz8659@glados.cs.rit.edu -t zsh"
+alias minotaur="ssh tjz8659@minotaur.cs.rit.edu"
+
+## Custom aliases 
+
+#alias gccgtk="gcc $(pkg-config --cflags --libs gtk+-3.0)"
+alias gtk="`pkg-config --libs --cflags gtk+-3.0`"
+alias spigot="ssh root@159.203.165.104"
+# xdg-open is too hard to spell :(
+alias open="xdg-open"
+# Change keyboard layout
+alias change="setxkbmap"
+
+# See current brightness percentage
+#alias bright="cd /sys/class/backlight/intel_backlight/"
+
+# See current battery power
+alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage"
