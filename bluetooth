@@ -1,0 +1,16 @@
+#!/bin/bash
+# Installs correct bluetooth firmware for Dell XPS 15 9550
+firm=BCM20703A1-0a5c-6410.hcd
+path=/lib/firmware/brcm/
+
+if [ $EUID != 0 ]
+then
+    echo "Please run thi script as root (sudo $@$0)."
+    exit
+fi
+
+wget
+https://github.com/winterheart/broadcom-bt-firmware/tree/master/brcm/$firm
+mv $firm $path
+
+exit 0
