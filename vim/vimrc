@@ -1,0 +1,18 @@
+execute pathogen#infect()
+filetype plugin indent on
+syntax on
+syn on se title
+
+" Sitewide configuration
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smartindent
+set relativenumber
+set textwidth=80
+
+" Configuration for C filetypes
+au Filetype c setl sw=8 sts=8 ts=8 expandtab 
+
+map <silent> <C-n> :NERDTreeToggle<CR>
