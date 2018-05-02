@@ -9,8 +9,6 @@ then
     exit
 fi
 
-wget
-https://github.com/winterheart/broadcom-bt-firmware/tree/master/brcm/$firm
-mv $firm $path
+cp $firm $path
 
 exit 0
