@@ -1,0 +1,26 @@
+urxvt256c*font:                 xft:Overpass Mono-11, xft:Hack for Powerline
+urxvt256c*scrollBar:            false
+urxvt256c.buffered:             true
+urxvt256c.underlineURLs:        true
+urxvt256c.saveLines:            2048
+
+! Do not scroll with output
+urxvt256c*scrollTtyOutput:      false
+
+! scroll in relation to buffer
+urxvt256c*scrollWithBuffer:     true
+
+urxvt256c*scrollTtyKeypress:    true
+
+urxvt256c.secondaryScreen:      1
+urxvt256c.secondaryScroll:      0
+urxvt256c.secondaryWheel:       1
+
+urxvt256c.iso14755:             false
+urxvt256c.iso14755_52:          false
+
+
+Xft.antialias:                  1
+Xft.autohint:                   1
+Xft.hinting:                    1
+Xft.rgba:                       rgb

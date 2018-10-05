@@ -1,0 +1,21 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+alias open="xdg-open"
+alias change="setxkbmap"
+
+alias tigeros="cd /home/tim/Code/TigerOS-Project"
+alias gitlab="cd /home/tim/Code/GitLab"
+alias code="cd /home/tim/Code"
+alias web="cd /home/tim/Code/RITlug/ritlug.github.io"
+alias runbook="cd /home/tim/Code/RITlug/runbook"
+
+# Git Aliases
+alias gits="git status"
+alias gita="git add"
+alias gitc="git commit -m"

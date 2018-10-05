@@ -1,6 +1,9 @@
 # ZSH Installation source
   export ZSH=/home/tim/.oh-my-zsh
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+
 # Current ZSH theme
 ZSH_THEME="robbyrussell"
 
@@ -10,9 +13,10 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH plugins
 plugins=(
   git
+  docker
 )
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # Custom configuration
 
@@ -27,18 +31,34 @@ fi
 alias glados="ssh tjz8659@glados.cs.rit.edu -t zsh"
 alias minotaur="ssh tjz8659@minotaur.cs.rit.edu"
 
+## RITlug Specific
+
+alias builder="ssh tjzabel21@builder.ritlug.com"
+alias mirrors="ssh tjzabel21@mirrors.ritlug.com"
+
 ## Custom aliases 
 
 #alias gccgtk="gcc $(pkg-config --cflags --libs gtk+-3.0)"
-alias gtk="`pkg-config --libs --cflags gtk+-3.0`"
-alias spigot="ssh root@159.203.165.104"
-# xdg-open is too hard to spell :(
 alias open="xdg-open"
-# Change keyboard layout
+
+# Change keyboard layout -- only works on X11
 alias change="setxkbmap"
+
+### Git repository shortcuts
+alias tigeros="cd /home/tim/Code/TigerOS-Project"
+alias tigerlab="cd /home/tim/Code/GitLab/TigerOS"
+alias web="cd /home/tim/Code/RITlug/ritlug.github.io"
+alias xfce="cd /home/tim/Code/XFCE"
+alias code="cd /home/tim/Code"
+alias runbook="cd /home/tim/Code/RITlug/runbook"
 
 # See current brightness percentage
 #alias bright="cd /sys/class/backlight/intel_backlight/"
 
 # See current battery power
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage"
+
+# Git Aliases
+alias gits="git status"
+alias gita="git add"
+alias gitc="git commit -m"
