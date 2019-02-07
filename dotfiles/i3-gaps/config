@@ -1,0 +1,175 @@
+# i3-gaps Configuration File
+# @author Tim Zabel <Tjzabel21@gmail.com>
+
+# Set modifier
+set $mod Mod4
+
+# i3 font
+font pango:Overpass Mono 11
+
+# i3-gaps border size
+for_window [class="^.*"] border pixel 6
+
+# set window gap size
+gaps inner 8
+gaps outer 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal
+
+# kill focused window
+bindsym $mod+q kill
+
+# run rofi
+bindsym $mod+space exec rofi -show run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused app placement
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Shift+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+Shift+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# Naming workspaces -- currently not used
+set $ws1 "1:Work"
+set $ws2 "2:Web"
+set $ws3 "3:Weechat"
+set $ws4 "4:Social"
+set $ws8 "8:Slack"
+set $ws9 "9:Mail"
+set $ws10 "10:Spotify"
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# restrict certain applications to specific workspaces
+# TODO figure out flatpak classes
+assign [class="pulse-sms"] 4
+assign [class="Thunderbird"] 9
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3
+bindsym $mod+Shift+r restart
+
+# exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# lock display -- only works on arch derivatives
+# bindsym $mod+Shift+l exec betterlockscreen --lock
+
+# resize window
+mode "resize" {
+        bindsym h resize shrink width 20 px or 20 ppt
+        bindsym j resize grow height 20 px or 20 ppt
+        bindsym k resize shrink height 20 px or 20 ppt
+        bindsym l resize grow width 20 px or 20 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# colors
+set $bg-color            #d7a654
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676e7d
+set $urgent-bg-color     #e53935
+set $indicator-color     #a0a0a0
+set $kinda-blue-color    #0b0f18
+set $gold-color          #d7a654
+set $awesome-orange-color#CB4B16
+
+# set window colors
+#                       border             background         text                 indicator
+client.focused          $bg-color          $bg-color          $text-color          $indicator-color
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
+
+
+# i3bar info
+bar {
+	status_command i3status
+	font pango:Overpass Mono 14
+    strip_workspace_numbers yes
+        
+	colors {
+		background $kinda-blue-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $gold-color        $kinda-blue-color  $text-color
+		inactive_workspace $kinda-blue-color  $kinda-blue-color  $text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+# App shortcuts
+bindsym $mod+c exec "/usr/bin/firefox"
+bindsym $mod+m exec "/usr/bin/thunderbird"
+bindsym $mod+s exec "flatpak run com.slack.Slack"
+bindsym $mod+t exec "flatpak run org.telegram.desktop"
+bindsym $mod+p exec "pulse-sms"
+bindsym $mod+Shift+l exec "lock.sh"
+bindsym $mod+Shift+s exec "flatpak run com.valvesoftware.Steam"
+
+
+# Autostart apps
+exec --no-startup-id feh --bg-fill ~/Pictures/fox.jpg
+exec --no-startup-id xfsettingsd
+exec xfce4-power-manager
+exec nm-applet
+exec redshift-gtk -l 0:0

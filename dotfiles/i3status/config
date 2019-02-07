@@ -6,7 +6,7 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 #
-# Latest Update: 25 11 2017
+# Latest Update: 06 Feb 2019
 
 general {
         output_format = "i3bar"
