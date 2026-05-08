@@ -23,34 +23,15 @@ plugins=(
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
-
-## RIT-specific
-
-alias glados="ssh tjz8659@glados.cs.rit.edu -t zsh"
-alias minotaur="ssh tjz8659@minotaur.cs.rit.edu"
-
-## RITlug Specific
-
-alias builder="ssh tjzabel21@builder.ritlug.com"
-alias mirrors="ssh tjzabel21@mirrors.ritlug.com"
 
 ## Custom aliases 
 
-#alias gccgtk="gcc $(pkg-config --cflags --libs gtk+-3.0)"
 alias open="xdg-open"
 
 # Change keyboard layout -- only works on X11
 alias change="setxkbmap"
-
-### Git repository shortcuts
-alias tigeros="cd /home/tim/Code/TigerOS-Project"
-alias tigerlab="cd /home/tim/Code/GitLab/TigerOS"
-alias web="cd /home/tim/Code/RITlug/ritlug.github.io"
-alias xfce="cd /home/tim/Code/XFCE"
-alias code="cd /home/tim/Code"
-alias runbook="cd /home/tim/Code/RITlug/runbook"
 
 # See current brightness percentage
 #alias bright="cd /sys/class/backlight/intel_backlight/"
@@ -62,3 +43,28 @@ alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percent
 alias gits="git status"
 alias gita="git add"
 alias gitc="git commit -m"
+
+alias d="deactivate"
+alias s="source .venv/bin/activate"
+alias v="nvim"
+alias vim="nvim"
+
+# AWS aliases
+alias ssmi="aws ssm start-session --target"
+
+# Docker aliases
+alias clean_vol='docker volume rm $(docker volume ls -q --filter dangling=true) && docker volume prune -f --filter all=true'
+alias clean_build='docker builder prune -af && docker buildx prune -af'
+alias clean_images='docker image prune -af'
+alias clean_prune='docker system prune -af'
+alias clean_secrets='docker secret ls -q | xargs docker secret rm'
+alias clean_cache='docker buildx prune -af && docker volume prune -f --filter all=true && docker system prune -f && docker builder prune -af'
+alias thunderdome='reset; clean_vol; clean_build; clean_images; clean_prune; clean_secrets; docker system df'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
