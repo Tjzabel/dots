@@ -1,0 +1,17 @@
+# Defaults
+palette 1: #C01C28
+palette 4: #12488B
+palette 6: #2AA1B3
+palette 12: #2A7BDE
+palette 14: #33C7DE
+
+
+# Updates
+background: #19202F
+text: #CECDD3
+
+palette 1: #f6bf6b
+palette 4: #33C7DE
+palette 6: #E57E3E
+palette 12: #2A7BDE
+palette 14: #33C7DE
